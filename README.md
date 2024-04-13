@@ -1,6 +1,6 @@
 ## Getting Started
 
-Puedes usar yarn o npm para instalas las dependencias, example: yarn install o npm install.
+Puedes usar yarn o npm para instalar las dependencias, ejemplo: yarn install o npm install.
 
 ```bash
 npm install
