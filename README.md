@@ -10,6 +10,8 @@ npm run dev
 yarn install
 # or
 yarn dev
+# or
+yarn jest
 ```
 
 Nota: usar node v18 o superior
