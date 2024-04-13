@@ -3,7 +3,7 @@ import Detalle from "./../../components/Detalle";
 
 export const metadata: Metadata = {
   title: "Detalle del producto",
-  description: "En ML encontraras los mejores productos del mercado",
+  description: "En ML encontrarás los mejores productos del mercado",
 };
 
 export default function Detail({ params }) {

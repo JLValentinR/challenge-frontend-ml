@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Buscador de productos en ML",
-  description: "En ML encontraras los mejores productos del mercado",
+  description: "En ML encontrarás los mejores productos del mercado",
 };
 
 export default function Home() {
