@@ -9,11 +9,11 @@ import BreadCrumb from "./BreadCrumb"
 export default function Id(props) {
   // Obtener el id de la url para poder consultar el detalle del producto
   const id: String = props.id
-  const [detalle, setDetalle] = useState({})
+  const [detalle, setDetalle] = useState()
   useEffect(() => {
     // Nos conectamos al API por medio de axios
     const getItems = async () => {
-      const baseURL = "http://localhost:3000/api/items/" + id
+      const baseURL = "http://localhost:3000/pages/api/items/" + id
       const items = await axios.get(baseURL)
       setDetalle(items.data.resources)
     }

@@ -10,14 +10,14 @@ import BreadCrumb from "./BreadCrumb"
 
 export default function Items() {
   // Creamos list que contendra el resultado con el listado de productos
-  const [list, setList] = useState('')
+  const [list, setList] = useState()
   // Obtenemos el valor del parametro search
   const queryParameters = useSearchParams()
   const searchs = queryParameters.get("search")
   
   useEffect(() => {
     const getItems = async () => {
-        const baseURL = "http://localhost:3000/api/items?q=" + searchs;
+        const baseURL = "http://localhost:3000/pages/api/items?q=" + searchs;
         const items = await axios.get(baseURL)
         setList(items.data.resources)
     }
@@ -28,9 +28,9 @@ export default function Items() {
   // Renderizamos los items de los productos recibidos del API
   const mostrarListado = list.items.slice(0, 4).map((objs, index) => 
     <li key={index}>
-      <Link href={'/items/' + objs.id}>
+      <Link href={'/pages/items/' + objs.id}>
         <div className="left">
-          <Image src={objs.picture} width={180} height={180} alt="imagen del producto" />
+          <Image src={objs.picture} priority={true} width={180} height={180} style={{ width: 'auto', height: 'auto' }} alt="imagen del producto" />
           <div>
             <div className="costo">
               <p>$ {objs.price.amount.toLocaleString(objs.price.currency !== '' ? objs.price.currency : 'ARS')}</p>

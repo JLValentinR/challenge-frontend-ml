@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Detalle from "./../../components/Detalle";
+import Resultado from "../../components/Resultado";
 
 export const metadata: Metadata = {
-  title: "Detalle del producto",
+  title: "Resultado de la busqueda",
   description: "En ML encontrarás los mejores productos del mercado",
 };
 
-export default function Detail({ params }) {
+export default function Search() {
   return (
-    <Detalle id={params.id} />
+    <Resultado />
   );
 }
