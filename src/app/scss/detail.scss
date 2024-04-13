@@ -1,8 +1,3 @@
-$amarrillo: #FFE600;
-$negro: #333333;
-$grisuno: #666666;
-$grisdos: #999999;
-$gristres: #EEEEEE;
 $blanco: #FFFFFF;
 $azul: #3483FA;
 
@@ -26,6 +21,9 @@ $azul: #3483FA;
     padding-bottom: 0px;
 
     article{
+        position: relative;
+        width: 100%;
+        height: 100%;
 
         img{
             width: 680px;

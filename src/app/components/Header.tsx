@@ -1,16 +1,20 @@
 "use client"
-import { useState, useEffect } from 'react';
-import "./../scss/header.scss";
-import logo from './../assets/logo_ml2x.png'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from "next/navigation"
+import Image from 'next/image'
+import Link from 'next/link'
+import "./../scss/header.scss"
 import logo2 from './../assets/logo_mlnormal.png'
-import searchImg from './../assets/ic_search2x.png'
 import searchImg2 from './../assets/ic_searchnormal.png'
 
 export default function Header() {
-  const queryParametro: Object = new URLSearchParams(window.location.search)
-  const parametro: String = queryParametro.get("search")
+  const { push } = useRouter()
+  const searchParams = useSearchParams()
+  const myParam = searchParams.get("search")
+  // Obtenemos el valor del parametro search
+  const queryParametro = useSearchParams()
+  const parametro: String = searchParams.get("search")
   const [search, setSearch] = useState('')
-  const anchoWindow: Number = window.innerWidth
 
   useEffect(() => {
     // Validamos si el parametro es diferente a null y lo agregamos a nuestro estado llamado search
@@ -19,23 +23,17 @@ export default function Header() {
     }
   }, [parametro])
 
-  const showImg = () => {
-    if (anchoWindow < 576) {
-      return true
-    }
-    return false
-  }
-
   const buscar = (event: any) => {
     // Concatenamos la ruta con la palabra ingresada en el campo de texto
-    window.location = '/items?search=' + search
+    // window.location = '/items?search=' + search
+    push('/items?search=' + search)
     event.preventDefault()
   }
-
+  // Esta función agrega a nuestro estado search la/las palabras que ingresamos en el campo de texto
   const palabra = (event: any) => {
     setSearch(event.target.value)
   }
-
+  // Esta función limpia el campo de texto cuando se da click en el logo
   const limpiarBuscador = () => {
     setSearch('')
   }
@@ -43,13 +41,13 @@ export default function Header() {
   return (
     <header className="header-container">
       <form onSubmit={buscar} className="header-elements">
-        <a href="/" onClick={limpiarBuscador}>
-          <img src={showImg() ? logo2.src : logo.src} alt="Logo" />
-        </a>
+        <Link href="/" onClick={limpiarBuscador}>
+          <Image src={logo2.src} width={53} height={36} alt="Logo" />
+        </Link>
         <div className="container-input">
           <input type="text" value={search} onChange={palabra} placeholder='Nunca dejes de buscar' />
           <div>
-            <img src={showImg() ? searchImg2.src : searchImg.src} onClick={buscar} alt="Icono buscar" />
+            <Image src={searchImg2.src} width={18} height={18} alt="Logo" />
           </div>
         </div>
       </form>

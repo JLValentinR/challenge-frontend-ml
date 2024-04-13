@@ -1,17 +1,13 @@
-$amarrillo: #FFE600;
-$negro: #333333;
-$grisuno: #666666;
-$grisdos: #999999;
+$amarillo: #FFE600;
 $gristres: #EEEEEE;
 $blanco: #FFFFFF;
-$azul: #3483FA;
 
 .header-container{
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
-    background-color: $amarrillo;
+    background-color: $amarillo;
 
     .header-elements{
         width: 1200px;
@@ -24,6 +20,7 @@ $azul: #3483FA;
     .header-elements {
         img{
             margin-top: 5px;
+            max-width: 90px;
             max-height: 40px;
         }
         

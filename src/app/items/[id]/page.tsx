@@ -1,50 +1,13 @@
-"use client"
-import { useState, useEffect } from 'react';
-import "./../../scss/detail.scss";
-import "./../../scss/search.scss";
-import axios from "axios";
-import BreadCrumb from "./../../components/BreadCrumb";
+import type { Metadata } from "next";
+import Detalle from "./../../components/Detalle";
 
-export default function Id({ params }) {
-  const { id } = params
-  const [detalle, setDetalle] = useState({})
-  useEffect(() => {
-    // Nos conectamos al API por medio de axios
-    const getItems = async () => {
-        const baseURL = "http://localhost:3030/items/" + id
-        const items = await axios.get(baseURL)
-        setDetalle(items.data.resources)
-    }
-    getItems()
-  }, [id])
-  if (!detalle) return [];
-  
+export const metadata: Metadata = {
+  title: "Detalle del producto",
+  description: "En ML encontraras los mejores productos del mercado",
+};
+
+export default function Detail({ params }) {
   return (
-    <section className="search-container">
-      { Object.entries(detalle).length > 0 ?
-      <div className="search-elements">
-        <BreadCrumb categorias={[detalle.item.category]}></BreadCrumb>
-        <div className="detail-container grid-container">
-          <article className="img">
-            <img src={detalle.item.picture} alt="imagen del producto" />
-          </article>
-          <aside className="price">
-            <p className="existentes">Nuevos . {detalle.item.sold_quantity} vendidos</p>
-            <p className="title">{detalle.item.title}</p>
-            <div className="precio">
-              <p>$ {detalle.item.price.amount.toLocaleString(detalle.item.price.currency !== '' ? detalle.item.price.currency : 'ARS')}</p>
-              <p className="decimal">{detalle.item.price.decimals > 9 ? detalle.item.price.decimals : detalle.item.price.decimals + '0'}</p>
-            </div>
-            <button className="comprar">Comprar</button>
-          </aside>
-          <div className="descriptions">
-            <p>Descripción del producto</p>
-            <p className="descripcion">{detalle.item.description}</p>
-          </div>
-          <div className="extra"></div>
-        </div>
-      </div>
-      : <p>No existe el producto</p>}
-    </section>
+    <Detalle id={params.id} />
   );
 }
