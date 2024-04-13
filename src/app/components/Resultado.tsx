@@ -30,7 +30,7 @@ export default function Items() {
     <li key={index}>
       <Link href={'/pages/items/' + objs.id}>
         <div className="left">
-          <Image src={objs.picture} priority={true} width={180} height={180} style={{ width: 'auto', height: 'auto' }} alt="imagen del producto" />
+          <Image src={objs.picture} width={180} height={180} alt="imagen del producto" />
           <div>
             <div className="costo">
               <p>$ {objs.price.amount.toLocaleString(objs.price.currency !== '' ? objs.price.currency : 'ARS')}</p>
